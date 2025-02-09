@@ -9,5 +9,5 @@ user_body = {
 }
 
 kit_body = {
-       "name": "Mi conjunto", 
+       "name": "Mi Kit", 
        
