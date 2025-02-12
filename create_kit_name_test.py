@@ -29,7 +29,7 @@ def test2_create_new_kit_511_character_name_success_response():
     current_kit_body = get_kit_body (data.test1_kit_name)
     positive_assert(current_kit_body)
 
-
+2
 def test3_create_new_kit_0_character_name_error_response():
     current_kit_body = get_kit_body("")
     negative_assert_code_400(current_kit_body)
