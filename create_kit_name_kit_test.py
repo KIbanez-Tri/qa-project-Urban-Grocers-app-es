@@ -9,7 +9,7 @@ def get_kit_body(name):
 def get_new_user_token():
     user_body = data.user_body
     response = sender_stand_request.post_create_new_user(user_body)
-    return response.json()["authToken"] #tengo duda de esta variable si es authToken o Auth_token
+    return response.json()["authToken"]
 
 def positive_assert(kit_body):
     response = sender_stand_request.post_new_client_kit(kit_body, get_new_user_token())
@@ -26,16 +26,16 @@ def test1_create_new_kit_1_character_name_success_response():
     positive_assert(current_kit_body)
 
 def test2_create_new_kit_511_character_name_success_response():
-    current_kit_body = get_kit_body (data.test1_kit_name)
+    current_kit_body = get_kit_body (data.test2_kit_name)
     positive_assert(current_kit_body)
 
-2
+
 def test3_create_new_kit_0_character_name_error_response():
     current_kit_body = get_kit_body("")
     negative_assert_code_400(current_kit_body)
 
 def test4_create_new_512_character_name_error_response():
-    current_kit_body = get_kit_body(data.test2_kit_name)
+    current_kit_body = get_kit_body(data.test4_kit_name)
     negative_assert_code_400(current_kit_body)
 
 def test5_create_user_has_number_in_first_name_success_response():
@@ -57,6 +57,6 @@ def test8_create_kit_without_name_parameter():
 
 def test9_create_kit_number_type_name_parameter():
     current_kit_body = get_kit_body(123)
-    positive_assert(current_kit_body)
+    negative_assert_code_400(current_kit_body)
 
 
